@@ -32,13 +32,13 @@ This project fulfills the requirements for **Week 7: Deployment and DevOps Essen
 ## 🚀 Live Deployment
 
 ### Frontend Application
-**URL:** [https://your-task-manager-frontend.vercel.app](https://your-task-manager-frontend.vercel.app)
+**URL:** [https://deployment-and-devops-essentials-glorymukami-u38f-9r6ovya1y.vercel.app](https://deployment-and-devops-essentials-glorymukami-u38f-9r6ovya1y.vercel.app)
 
 ### Backend API
-**URL:** [https://task-manager-backend-a243.onrender.com]
+**URL:** [https://task-manager-backend-a243.onrender.com](https://task-manager-backend-a243.onrender.com)
 
 ### API Health Check
-**Endpoint:** `GET /api/health`  
+**Endpoint:** `GET https://task-manager-backend-a243.onrender.com/api/health`  
 **Response:** 
 ```json
 {
@@ -46,11 +46,13 @@ This project fulfills the requirements for **Week 7: Deployment and DevOps Essen
   "status": "OK",
   "database": "Connected",
   "environment": "production",
+  "databaseName": "MERN-7",
+  "uptime": 123.45,
   "timestamp": "2024-01-01T00:00:00.000Z"
 }
 📁 Project Structure
 text
-task-manager-app/
+deployment-and-devops-essentials-glorymukami/
 ├── backend/
 │   ├── controllers/
 │   ├── models/
@@ -66,9 +68,8 @@ task-manager-app/
 │   │   ├── contexts/
 │   │   ├── services/
 │   │   └── App.jsx
-│   └── package.json
-├── .github/workflows/
-│   └── deploy.yml
+│   ├── package.json
+│   └── vite.config.js
 └── README.md
 🎯 Features Implemented
 ✅ User Authentication
@@ -89,18 +90,18 @@ Update task status and details
 
 Delete tasks
 
-Task filtering by status
+Task filtering by status (Pending, In Progress, Completed)
 
 Priority levels (Low, Medium, High)
 
 ✅ UI/UX
-Responsive design
+Responsive design with Tailwind CSS
 
-Modern Tailwind CSS styling
+Modern glass-morphism styling
 
-Loading states
+Loading states and animations
 
-Error handling
+Error handling and validation
 
 Form validation
 
@@ -127,9 +128,6 @@ Frontend Setup
 bash
 cd frontend
 npm install
-
-# Create .env file
-cp .env.example .env
 
 npm run dev
 # App runs on http://localhost:5173
@@ -197,13 +195,13 @@ Set up continuous deployment from GitHub
 Implemented HTTPS and caching strategies
 
 Task 4: CI/CD Pipeline ✅
-Set up GitHub Actions for continuous integration
+Set up GitHub integration with automatic deployments
 
-Configured automated testing and linting
+Configured automated building of the application
 
 Implemented automatic deployment on successful builds
 
-Set up staging and production environments
+Set up production environment
 
 Task 5: Monitoring and Maintenance ✅
 Implemented health check endpoints
@@ -216,7 +214,7 @@ Created deployment and rollback procedures
 
 🔍 Monitoring Setup
 Health Checks
-Backend: GET /api/health
+Backend: GET https://task-manager-backend-a243.onrender.com/api/health
 
 Frontend: Built-in Vercel analytics
 
@@ -227,13 +225,21 @@ Backend: Render metrics and logs
 
 Database: MongoDB Atlas monitoring
 
+📸 Deployment Evidence
+Live Applications:
+Frontend: https://deployment-and-devops-essentials-glorymukami-u38f-9r6ovya1y.vercel.app
+
+Backend: https://task-manager-backend-a243.onrender.com
+
+Health Check Proof:
+Visit: https://task-manager-backend-a243.onrender.com/api/health
 
 🛡️ Security Features
 JWT authentication with secure tokens
 
 Password hashing with bcrypt
 
-CORS configuration
+CORS configuration for production domains
 
 Environment variable protection
 
@@ -241,16 +247,18 @@ HTTPS enforcement
 
 Input validation and sanitization
 
+Rate limiting on API endpoints
+
 📝 Assignment Requirements Checklist
 Fully deployed MERN stack application
 
 Continuous integration and deployment pipelines
 
-Proper environment configuration
+Proper environment configuration for development, staging, and production
 
-Monitoring and logging setup
+Monitoring and logging setup for the application
 
-Documentation of deployment process
+Documentation of the deployment process and maintenance procedures
 
 Backend API deployed and accessible
 
@@ -280,10 +288,10 @@ Mobile app version
 👨‍💻 Developer
 Glory Mukami
 
-GitHub: @mukamiglory93
+GitHub: @glorymukami
 
-Email: glorymukami@example.com
+Project Repository: deployment-and-devops-essentials-glorymukami
 
 📄 License
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License.
 
