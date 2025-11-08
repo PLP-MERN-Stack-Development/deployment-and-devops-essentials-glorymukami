@@ -5,7 +5,6 @@ import dotenv from 'dotenv';
 import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
 import morgan from 'morgan';
-import errorHandler from './middleware/errorHandler.js';
 
 // Route imports
 import authRoutes from './routes/auth.js';
@@ -30,10 +29,17 @@ const limiter = rateLimit({
 });
 app.use(limiter);
 
-// CORS - Configure for frontend
+// CORS - Allow both development and production origins
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:5173',
-  credentials: true
+  origin: [
+    'http://localhost:5173',  // Development
+    'https://deployment-and-devops-essentials-glorymukami-u38f-9r6ovya1y.vercel.app',  // Your Production URL
+    'https://deployment-and-devops-essentials-gl-three.vercel.app',  // Your Domain URL
+    'https://*.vercel.app'  // All Vercel subdomains
+  ],
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
 }));
 
 // Body parser middleware
@@ -52,7 +58,8 @@ app.get('/', (req, res) => {
     environment: process.env.NODE_ENV,
     database: 'MERN-7',
     timestamp: new Date().toISOString(),
-    version: '1.0.0'
+    version: '1.0.0',
+    cors: 'Enabled for production and development'
   });
 });
 
@@ -65,7 +72,15 @@ app.get('/api/health', (req, res) => {
     environment: process.env.NODE_ENV,
     databaseName: 'MERN-7',
     uptime: process.uptime(),
-    timestamp: new Date().toISOString()
+    timestamp: new Date().toISOString(),
+    cors: {
+      allowedOrigins: [
+        'http://localhost:5173',
+        'https://deployment-and-devops-essentials-glorymukami-u38f-9r6ovya1y.vercel.app',
+        'https://deployment-and-devops-essentials-gl-three.vercel.app',
+        'https://*.vercel.app'
+      ]
+    }
   });
 });
 
@@ -114,6 +129,7 @@ mongoose.connection.on('error', (err) => {
 });
 
 // Use error handler (must be after routes)
+import errorHandler from './middleware/errorHandler.js';
 app.use(errorHandler);
 
 // Start server
@@ -129,6 +145,11 @@ const startServer = async () => {
       console.log(`❤️  Health check: http://localhost:${PORT}/api/health`);
       console.log(`🔐 Auth routes: http://localhost:${PORT}/api/auth`);
       console.log(`📝 Task routes: http://localhost:${PORT}/api/tasks`);
+      console.log(`🌐 CORS enabled for:`);
+      console.log(`   - http://localhost:5173`);
+      console.log(`   - https://deployment-and-devops-essentials-glorymukami-u38f-9r6ovya1y.vercel.app`);
+      console.log(`   - https://deployment-and-devops-essentials-gl-three.vercel.app`);
+      console.log(`   - https://*.vercel.app`);
       console.log('Press Ctrl+C to stop the server\n');
     });
 
