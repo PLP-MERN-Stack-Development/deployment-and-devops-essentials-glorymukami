@@ -32,7 +32,8 @@ This project fulfills the requirements for **Week 7: Deployment and DevOps Essen
 ## 🚀 Live Deployment
 
 ### Frontend Application
-**URL:** [https://deployment-and-devops-essentials-glorymukami-u38f-9r6ovya1y.vercel.app](https://deployment-and-devops-essentials-glorymukami-u38f-9r6ovya1y.vercel.app)
+**URL:**  [https://deployment-and-devops-essentials-gl-three.vercel.app](https://deployment-and-devops-essentials-gl-three.vercel.app)
+
 
 ### Backend API
 **URL:** [https://task-manager-backend-a243.onrender.com](https://task-manager-backend-a243.onrender.com)
